@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { getAllCharacters, setCharacterList } from "../../actions/characterListActions";
-import Character from "../Character/Character";
+import { getAllCharacters } from "../../actions/characterListActions";
+import Character from "./Character/Character";
 
 
 const CharacterList = (props) => {
