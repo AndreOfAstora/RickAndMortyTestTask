@@ -5,7 +5,8 @@ let initialState = {
   inputText:'',
   autocomplete: {
     list: [],
-    keyword: ''    
+    keyword: '',
+    count: 0 
   }
 }
 
@@ -18,7 +19,8 @@ const searchReducer = (state = initialState, action) => {
         ...state,
         autocomplete:{
           list: action.autocomplete.list,
-          keyword: action.autocomplete.keyword
+          keyword: action.autocomplete.keyword,
+          count: action.autocomplete.count
         }
       }
     case UPDATE_INPUT:
