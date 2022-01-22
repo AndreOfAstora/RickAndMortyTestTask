@@ -34,14 +34,15 @@ export const getAllCharacters = () => async (dispatch) => {
 
 
 export const getAllCharactersByKeyword = (keyword) => async (dispatch, getState) => {  
+  
   const {results, info} = await charactersAPI.getCharactersByKeywordWithInfo(keyword);
   dispatch(setCharacterList(results));
-
+  
   for (let i = 2; i <= info.pages; i++) {
     const response = await charactersAPI.getCharactersByKeyword(keyword, i);
     dispatch(appendCharacterList(response));
   }
 } 
 
-window.getAllCharacters = getAllCharacters;
-window.getAllCharactersByKeyword = getAllCharactersByKeyword;
+// window.getAllCharacters = getAllCharacters;
+// window.getAllCharactersByKeyword = getAllCharactersByKeyword;

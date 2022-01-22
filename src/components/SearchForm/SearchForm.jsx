@@ -1,5 +1,6 @@
 import { connect } from "react-redux"
-import { getAutocompleteOptions, updateInput } from "../../actions/searchActions";
+import { Link, useNavigate } from "react-router-dom";
+import { getAutocompleteOptions } from "../../actions/searchActions";
 
 
 const SearchForm = (props) => {
@@ -15,9 +16,15 @@ const SearchForm = (props) => {
     keyword
   } = autocomplete;
 
+  let navigate = useNavigate();
+
   const handleChange = (e) => {
     let inputText = e.target.value;
     getAutocompleteOptions(inputText);
+  }
+
+  const handleBtnClick = () => {    
+    navigate(`search/${keyword}`);
   }
 
 
@@ -25,11 +32,15 @@ const SearchForm = (props) => {
     <>
       <p>Search form</p>
       <textarea onChange={handleChange} placeholder="search by name" value={inputText}></textarea>
-      <button>search</button>
+      <button onClick={handleBtnClick}>search</button>
       <section>
         <h3>
-          {count} search results
-          <p>by keyword <i>{keyword}</i></p>
+          
+          <Link to={`search/${keyword}`}>
+            <p>
+              {count} search results by keyword <i>"{keyword}"</i>
+            </p>
+          </Link>
         </h3>
         {           
           (list.length === 0)
@@ -53,7 +64,6 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    updateInput: (text) => dispatch(updateInput(text)),
     getAutocompleteOptions: (keyword) => dispatch(getAutocompleteOptions(keyword))
   }
 }

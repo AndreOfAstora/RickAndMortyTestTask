@@ -1,20 +1,26 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { getAllCharacters } from "../../actions/characterListActions";
+import { useParams } from "react-router-dom";
+import { getAllCharacters, getAllCharactersByKeyword } from "../../actions/characterListActions";
 import Character from "./Character/Character";
 
 
 const CharacterList = (props) => {
   const {
     characters,
-    getAllCharacters
+    getAllCharacters,
+    getAllCharactersByKeyword
   } = props;
 
-  useEffect(() => {
-    //should get all characters for the first time.
-    // setCharacterList(mockResponse);
-    getAllCharacters();
-  }, [])
+  let params = useParams();  
+
+  useEffect(() => {    
+    if (params.keyword === undefined) {      
+      getAllCharacters();
+    } else {      
+      getAllCharactersByKeyword(params.keyword);
+    }    
+  }, [params]);
 
 
   return (
@@ -36,6 +42,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     getAllCharacters: () => dispatch(getAllCharacters()),
+    getAllCharactersByKeyword: keyword => dispatch(getAllCharactersByKeyword(keyword))
   }
 }
 
