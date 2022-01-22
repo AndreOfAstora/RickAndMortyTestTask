@@ -1,14 +1,22 @@
-import { connect } from "react-redux"
+import { useSelector } from "react-redux";
+import { shallowEqual } from "react-redux";
+import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom";
 import { getAutocompleteOptions } from "../../actions/searchActions";
 
 
 const SearchForm = (props) => {
+  
+  const dispatch = useDispatch();
+
   const {
     autocomplete,
-    inputText,
-    getAutocompleteOptions
-  } = props;
+    inputText
+  } = useSelector(state => ({
+    autocomplete: state.search.autocomplete,
+    inputText: state.search.inputText
+  })  
+  );
 
   const {
     list,
@@ -18,9 +26,10 @@ const SearchForm = (props) => {
 
   let navigate = useNavigate();
 
+  
   const handleChange = (e) => {
     let inputText = e.target.value;
-    getAutocompleteOptions(inputText);
+    dispatch(getAutocompleteOptions(inputText));    
   }
 
   const handleBtnClick = () => {    
@@ -55,17 +64,5 @@ const SearchForm = (props) => {
   )
 }
 
-const mapState = (state) => {
-  return {
-    inputText: state.search.inputText,
-    autocomplete: state.search.autocomplete
-  }
-}
 
-const mapDispatch = (dispatch) => {
-  return {
-    getAutocompleteOptions: (keyword) => dispatch(getAutocompleteOptions(keyword))
-  }
-}
-
-export default connect(mapState, mapDispatch)(SearchForm);
+export default SearchForm;
