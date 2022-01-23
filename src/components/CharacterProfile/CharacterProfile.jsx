@@ -28,14 +28,17 @@ const CharacterProfile = () => {
 
 
   return (
-    <p>
-      {
-        `${(params.characterId === undefined)
-          ? 'no id parsed'
-          : params.characterId
-        }`
-      }
-    </p>
+    <>
+      <img src={image} alt= {`Photo of ${name}`} />
+      <p>{`ID: ${id}`}</p>
+      <p>{`${name}`}</p>
+      <p>{`${species}`}</p>
+      <p>{`${gender}`}</p>
+      <p>{`${location.name}`}</p>
+      <p>{`${episode.length+1}`}</p>
+      <p>{`${status}`}</p>
+      <p>{`${created}`}</p>
+    </>
   )
 }
 
