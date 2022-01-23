@@ -31,7 +31,11 @@ const Autocomplete = () => {
         (list.length === 0)
           ? null
           : list.map(ch =>            
-            <AutocompleteItem name = {ch.name} status = {ch.status} />
+            <AutocompleteItem
+              id = {ch.id}
+              name = {ch.name}
+              status = {ch.status}              
+            />
           )
       }
     </section>
