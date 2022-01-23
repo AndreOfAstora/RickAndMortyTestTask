@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import AutocompleteItem from "./AutocompleteItem/AutocompleteItem";
 
 
 const Autocomplete = () => {
@@ -29,9 +30,9 @@ const Autocomplete = () => {
       {
         (list.length === 0)
           ? null
-          : list.map(ch => <p>
-            {ch.name + ' ' + ch.status}
-          </p>)
+          : list.map(ch =>            
+            <AutocompleteItem name = {ch.name} status = {ch.status} />
+          )
       }
     </section>
   )
