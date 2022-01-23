@@ -41,13 +41,23 @@ export const charactersAPI = {
   
 }
 
-window.getCharactersByKeyword = charactersAPI.getCharactersByKeyword;
+export const characterProfileAPI = {
+  getCharacterProfile(id) {
+    return characters.get(
+      `/character/${id}`
+    ).then(response => response.data)
+  }
+}
 
-window.getCharacters = charactersAPI.getCharacters;
+// window.getCharactersByKeyword = charactersAPI.getCharactersByKeyword;
 
-window.getCharactersByKeywordWithInfo = charactersAPI.getCharactersByKeywordWithInfo;
+// window.getCharacters = charactersAPI.getCharacters;
 
-window.getCharactersWithInfo = charactersAPI.getCharactersWithInfo;
+// window.getCharactersByKeywordWithInfo = charactersAPI.getCharactersByKeywordWithInfo;
+
+// window.getCharactersWithInfo = charactersAPI.getCharactersWithInfo;
+
+// window.getCharacterProfile = characterProfileAPI.getCharacterProfile;
 
 
 
