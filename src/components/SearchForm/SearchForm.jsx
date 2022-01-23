@@ -1,20 +1,15 @@
 import { useSelector } from "react-redux";
-import { shallowEqual } from "react-redux";
-import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom";
-import { getAutocompleteOptions } from "../../actions/searchActions";
+import SearchInput from "./SearchInput/SearchInput";
 
 
 const SearchForm = (props) => {
   
-  const dispatch = useDispatch();
-
+  
   const {
-    autocomplete,
-    inputText
+    autocomplete    
   } = useSelector(state => ({
-    autocomplete: state.search.autocomplete,
-    inputText: state.search.inputText
+    autocomplete: state.search.autocomplete
   })  
   );
 
@@ -26,11 +21,7 @@ const SearchForm = (props) => {
 
   let navigate = useNavigate();
 
-  
-  const handleChange = (e) => {
-    let inputText = e.target.value;
-    dispatch(getAutocompleteOptions(inputText));    
-  }
+   
 
   const handleBtnClick = () => {    
     navigate(`search/${keyword}`);
@@ -40,7 +31,7 @@ const SearchForm = (props) => {
   return (
     <>
       <p>Search form</p>
-      <textarea onChange={handleChange} placeholder="search by name" value={inputText}></textarea>
+      <SearchInput/>      
       <button onClick={handleBtnClick}>search</button>
       <section>
         <h3>
@@ -59,7 +50,6 @@ const SearchForm = (props) => {
           </p>)
         }
       </section>
-
     </>
   )
 }
