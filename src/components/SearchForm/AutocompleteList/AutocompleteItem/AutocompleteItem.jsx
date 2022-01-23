@@ -10,7 +10,7 @@ const AutocompleteItem = (props) => {
 
 
   return (
-    <Link to={`characterProfile/${id}`}>
+    <Link to={`/characterProfile/${id}`}>
       <p>
         {`${name} ${status}`}
       </p>

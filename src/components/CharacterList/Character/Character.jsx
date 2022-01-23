@@ -8,7 +8,7 @@ const Character = (props) => {
     status } = props.character;
 
   return (
-    <Link to = {`characterProfile/${id}`}>
+    <Link to = {`/characterProfile/${id}`}>
       <p>
         {name + ' ' + status}
       </p>
