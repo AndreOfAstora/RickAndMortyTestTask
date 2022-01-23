@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import SearchButton from "./SearchButton/SearchButton";
 import SearchInput from "./SearchInput/SearchInput";
 
 
@@ -19,20 +20,14 @@ const SearchForm = (props) => {
     keyword
   } = autocomplete;
 
-  let navigate = useNavigate();
-
-   
-
-  const handleBtnClick = () => {    
-    navigate(`search/${keyword}`);
-  }
+  
 
 
   return (
     <>
       <p>Search form</p>
-      <SearchInput/>      
-      <button onClick={handleBtnClick}>search</button>
+      <SearchInput/>  
+      <SearchButton />      
       <section>
         <h3>
           
