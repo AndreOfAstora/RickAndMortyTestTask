@@ -1,12 +1,18 @@
+import { Link } from "react-router-dom";
 
 
 const Character = (props) => {
-  const { name, status } = props.character;
+  const { 
+    id,
+    name,
+    status } = props.character;
 
   return (
-    <p>
-      {name + ' ' + status}
-    </p>
+    <Link to = {`characterProfile/${id}`}>
+      <p>
+        {name + ' ' + status}
+      </p>
+    </Link>    
   )
 }
 
