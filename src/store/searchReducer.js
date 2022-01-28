@@ -4,7 +4,13 @@ import { SET_AUTOCOMPLETE, UPDATE_INPUT } from "../actions/searchActions";
 let initialState = {
   inputText:'',
   autocomplete: {
-    list: [],
+    list: [
+      {
+        id: null,
+        name: '',
+        status: ''
+      }
+    ],
     keyword: '',
     count: 0 
   }
@@ -18,7 +24,14 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         autocomplete:{
-          list: action.autocomplete.list,
+          list: action.autocomplete.list
+          .map(ch => 
+            ({
+              id: ch.id,
+              name: ch.name,
+              status: ch.status
+            })
+          ),
           keyword: action.autocomplete.keyword,
           count: action.autocomplete.count
         }
