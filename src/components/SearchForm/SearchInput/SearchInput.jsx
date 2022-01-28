@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getAutocompleteOptions } from "../../../actions/searchActions";
+import TextField from '@mui/material/TextField';
 
-
-const SearchInput = () => {
+const SearchInput = (props) => {
   const dispatch = useDispatch();
 
   const {
@@ -16,9 +16,18 @@ const SearchInput = () => {
     let inputText = e.target.value;
     dispatch(getAutocompleteOptions(inputText));    
   }
+  
+  
 
-  return(
-    <textarea onChange={handleChange} placeholder="search by name" value={inputText}></textarea>
+  return(    
+    <TextField
+      {...props.params}      
+      onChange={handleChange}
+      variant='outlined'
+      placeholder="search by name"
+      value={inputText}
+    >
+    </TextField>
   )
 }
 
