@@ -7,8 +7,8 @@ export const setAutocomplete = (autocomplete) => ({
   type: SET_AUTOCOMPLETE, autocomplete
 })
 
-export const updateInput = (text) => ({
-  type: UPDATE_INPUT, text
+export const updateInput = (inputText) => ({
+  type: UPDATE_INPUT, inputText
 })
 
 export const getAutocompleteOptions = (keyword) => async (dispatch) => { 
